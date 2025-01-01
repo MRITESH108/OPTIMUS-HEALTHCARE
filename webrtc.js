@@ -12,7 +12,7 @@ const config = {
 };
 
 // Initialize WebSocket for signaling server communication
-const signalingServerUrl = "wss://example.com/signaling"; // Replace with your signaling server URL
+const signalingServerUrl = "ws://localhost:8080"; // Update the signaling server URL
 const signalingSocket = new WebSocket(signalingServerUrl);
 
 signalingSocket.onmessage = (message) => {
