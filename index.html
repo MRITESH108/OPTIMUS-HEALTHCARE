@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OPTIMUS HEALTHCARE</title>
     <style>
-       
+        /* General Styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +13,6 @@
             font-family: Arial, sans-serif;
         }
 
-      
         html, body {
             height: 100%;
             display: flex;
@@ -24,6 +23,29 @@
             background-color: #f4f7f6;
             color: #333;
             text-align: center;
+        }
+
+        /* Video Overlay Styles */
+        #video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #video-overlay video {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #video-overlay.hidden {
+            display: none;
         }
 
         header {
@@ -51,7 +73,6 @@
             opacity: 0.8;
         }
 
-   
         .content {
             flex: 1;
             display: flex;
@@ -77,8 +98,8 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none; /* Remove underline */
-            color: inherit; /* Inherit text color */
+            text-decoration: none;
+            color: inherit;
         }
 
         .card:hover {
@@ -117,8 +138,17 @@
     </style>
 </head>
 <body>
+    <!-- Video Overlay -->
+    <div id="video-overlay">
+        <video autoplay muted>
+            <source src="hmsb.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+    <!-- Header -->
     <header>
-        <img src="Projectlogo.jpg" alt="MRITESH108 Healthcare Logo" class="logo">
+        <img src="Projectlogo.jpg" alt="OPTIMUS HEALTHCARE Logo" class="logo">
         <div>
             <h1>OPTIMUS HEALTHCARE</h1>
             <p>Your One-Stop Platform for Seamless Healthcare Services</p>
@@ -128,28 +158,28 @@
     <!-- Navigation Section -->
     <div class="content">
         <div class="nav-container">
-            <!-- Patient Card (Redirect to loginfile.html) -->
+            <!-- Patient Card -->
             <a href="loginfile.html" class="card patient">
                 <img src="https://img.icons8.com/ios/50/3498db/user.png" alt="Patient Icon">
                 <h3>Patient</h3>
                 <p>Register, book appointments, and view your history.</p>
             </a>
 
-            <!-- Doctor Card (Redirect to Doctorlogin.html) -->
+            <!-- Doctor Card -->
             <a href="Doctorlogin.html" class="card doctor">
                 <img src="doctor.png" alt="Doctor Icon">
                 <h3>Doctor</h3>
                 <p>Manage appointments and telepathy sessions.</p>
             </a>
 
-            <!-- Patholab Card (Redirect to patholablogin.html) -->
+            <!-- Patholab Card -->
             <a href="patholablogin.html" class="card patholab">
                 <img src="https://img.icons8.com/ios/50/f39c12/test-tube.png" alt="Patholab Icon">
                 <h3>Patholab</h3>
                 <p>Upload reports and manage lab tests.</p>
             </a>
 
-            <!-- Emergency Card (Redirect to emergency.html) -->
+            <!-- Emergency Card -->
             <a href="emergency.html" class="card emergency">
                 <img src="https://img.icons8.com/ios/50/e74c3c/ambulance.png" alt="Emergency Icon">
                 <h3>Emergency</h3>
@@ -169,5 +199,21 @@
     <footer>
         &copy; 2024 OPTIMUS HEALTHCARE | All Rights Reserved  
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Check session storage
+        const videoOverlay = document.getElementById('video-overlay');
+        if (sessionStorage.getItem('videoPlayed')) {
+            videoOverlay.classList.add('hidden');
+        } else {
+            sessionStorage.setItem('videoPlayed', 'true');
+        }
+
+        // Hide video on click
+        videoOverlay.addEventListener('click', () => {
+            videoOverlay.classList.add('hidden');
+        });
+    </script>
 </body>
 </html>
