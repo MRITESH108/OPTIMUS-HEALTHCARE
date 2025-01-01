@@ -1,6 +1,9 @@
+// webrtc.js
+
 let localStream;
 let remoteStream;
 let peerConnection;
+
 const config = {
     iceServers: [
         { urls: "stun:stun.l.google.com:19302" },
