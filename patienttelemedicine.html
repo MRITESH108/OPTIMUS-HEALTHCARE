@@ -40,10 +40,13 @@
         <video id="remoteVideo" autoplay></video>
     </div>
     <div id="waiting">Waiting for doctor to connect...</div>
+    <button id="connectButton">Connect</button>
 
     <script src="webrtc.js"></script>
     <script>
-        startPatient();
+        document.getElementById('connectButton').addEventListener('click', () => {
+            startPatient();
+        });
     </script>
 </body>
 </html>
